@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@import "@fontsource/geist-mono";
+@import "@fontsource/fira-mono";
+@import "@fontsource/fira-mono/700.css";
+@import "@fontsource/inter";
+
+:root {
+    --font-mono: "Geist Mono", monospace;
+    --font-fira: "Fira Mono", monospace;
+    --font-inter: "Inter", sans-serif;
+
+    --bg-primary: linear-gradient(65deg, #0a0c11, #0c0f18);
+    --bg-card: #0f1326;
+    --border-card: #1e2440;
+    --text-primary: #ffffff;
+    --text-muted: #6b7280;
+    --accent-cyan: #3ebaff;
+    --accent-purple: #6013de;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: var(--font-mono);
+}
+
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    font-family: var(--font-mono);
+}

@@ -1,0 +1,64 @@
+---
+// Este componente no necesita props ni lógica por ahora
+// El frontmatter está vacío pero los --- son obligatorios
+---
+
+<header>
+    <a href="/" class="logo">
+        <span class="bracket">{"{ "}</span>
+        <span class="name">BRIAN MATTHEWS</span>
+        <span class="bracket">{" }"}</span>
+    </a>
+    <button class="menu-btn" aria-label="Abrir menú">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+    </button>
+</header>
+
+<style>
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25rem 1.5rem;
+        position: relative;
+        z-index: 10;
+    }
+
+    .logo {
+        font-family: var(--font-fira);
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+    }
+
+    .bracket {
+        color: var(--accent-cyan);
+    }
+
+    .name {
+        color: var(--text-primary);
+    }
+
+    .menu-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-primary);
+        padding: 0.25rem;
+    }
+</style>
