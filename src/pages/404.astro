@@ -1,0 +1,208 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+---
+
+<BaseLayout title="404 - Brian Matthews">
+    <Header />
+    <main>
+        <div class="pattern"></div>
+        <div class="content">
+            <p class="error-label">Error</p>
+            <h1 class="error-code">404</h1>
+            <p class="error-message">Ups!!!</p>
+        </div>
+        <div class="orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+            <div class="orb orb-4"></div>
+        </div>
+    </main>
+</BaseLayout>
+
+<style>
+    main {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 80px);
+        overflow: hidden;
+        font-family: var(--font-inter);
+    }
+
+    .pattern {
+        position: fixed;
+        inset: 0;
+        background-image: url("/frame404.svg");
+        background-repeat: no-repeat;
+        opacity: 0.4;
+        z-index: 0;
+    }
+
+    @media (min-width: 800px) {
+        .pattern {
+            background-image: url("/frame404-desktop.svg");
+            opacity: 0.3;
+        }
+    }
+
+    .content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .error-label {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        letter-spacing: 0.1em;
+    }
+
+    .error-code {
+        font-size: 8rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1;
+        letter-spacing: -0.02em;
+    }
+
+    .error-message {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        letter-spacing: 0.1em;
+    }
+
+    .orbs {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+    }
+
+    /* Móvil — esquina superior derecha */
+    .orb-1 {
+        width: 250px;
+        height: 250px;
+        top: -60px;
+        right: -40px;
+        background: linear-gradient(80deg, #6013de, #0a1121);
+        opacity: 0.7;
+        animation: float1 10s ease-in-out infinite alternate;
+    }
+
+    /* Móvil — debajo hacia el centro */
+    .orb-2 {
+        width: 180px;
+        height: 180px;
+        top: 120px;
+        right: 60px;
+        background: linear-gradient(80deg, #1370de, #0a1121);
+        opacity: 0.6;
+        animation: float2 12s ease-in-out infinite alternate;
+    }
+
+    /* Desktop — esquina superior izquierda */
+    @media (min-width: 800px) {
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            top: -80px;
+            left: -60px;
+            right: auto;
+            background: linear-gradient(70deg, #3ebaff, #0a1121);
+            opacity: 0.4;
+            animation: float1 4s ease-in-out infinite alternate;
+        }
+
+        .orb-2 {
+            width: 280px;
+            height: 280px;
+            top: 300px;
+            left: -60px;
+            right: auto;
+            background: linear-gradient(70deg, #3e46ff, #0a1121);
+            opacity: 0.4;
+            animation: float2 4s ease-in-out infinite alternate;
+        }
+        .orb-3 {
+            width: 500px;
+            height: 400px;
+            top: 550px;
+            right: 200px;
+            background: linear-gradient(70deg, #3ebaff, #0a1121);
+            opacity: 0.6;
+            animation: float3 4s ease-in-out infinite alternate;
+        }
+
+        .orb-4 {
+            width: 700px;
+            height: 300px;
+            top: 450px;
+            right: -300px;
+            background: linear-gradient(80deg, #6013de, #0a1121);
+            opacity: 0.4;
+            animation: float4 2s ease-in-out infinite alternate;
+        }
+    }
+    @keyframes float1 {
+        0% {
+            transform: translate(0px, 0px) scale(1);
+        }
+        50% {
+            transform: translate(-30px, 40px) scale(1.08);
+        }
+        100% {
+            transform: translate(10px, -15px) scale(0.95);
+        }
+    }
+
+    @keyframes float2 {
+        0% {
+            transform: translate(0px, 0px) scale(1);
+        }
+        50% {
+            transform: translate(15px, -20px) scale(1.1);
+        }
+        100% {
+            transform: translate(-10px, 15px) scale(0.92);
+        }
+    }
+
+    @keyframes float3 {
+        0% {
+            transform: translate(0px, 0px) scale(1);
+        }
+        50% {
+            transform: translate(20px, 10px) scale(1.06);
+        }
+        100% {
+            transform: translate(-15px, -20px) scale(0.97);
+        }
+    }
+
+    @keyframes float4 {
+        0% {
+            transform: translate(0px, 0px) scale(1);
+        }
+        50% {
+            transform: translate(-20px, -15px) scale(1.05);
+        }
+        100% {
+            transform: translate(25px, 30px) scale(1.1);
+        }
+    }
+</style>
