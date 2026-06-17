@@ -1,0 +1,118 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/layout/Header.astro";
+import BlogSearch from "../../components/blog/BlogSearch";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog", ({ data }) => {
+    return data.draft !== true;
+});
+
+const sortedPosts = posts.sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+);
+
+const tagFrequency: Record<string, number> = {};
+posts.forEach((post) => {
+    post.data.tags.forEach((tag) => {
+        tagFrequency[tag] = (tagFrequency[tag] || 0) + 1;
+    });
+});
+---
+
+<BaseLayout title="Blog - Brian Matthews">
+    <Header />
+
+    <div class="orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <div class="dots"></div>
+
+    <main>
+        <BlogSearch
+            client:load
+            posts={sortedPosts}
+            tagFrequency={tagFrequency}
+        />
+    </main>
+</BaseLayout>
+
+<style>
+    .orbs {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+    }
+
+    .orb-1 {
+        width: 250px;
+        height: 250px;
+        top: -60px;
+        left: -60px;
+        background: linear-gradient(70deg, #6013de, #0a1121);
+        opacity: 0.4;
+        animation: float1 10s ease-in-out infinite alternate;
+    }
+
+    .orb-2 {
+        width: 200px;
+        height: 200px;
+        top: 120px;
+        left: 20px;
+        background: linear-gradient(70deg, #1370de, #0a1121);
+        opacity: 0.4;
+        animation: float2 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes float1 {
+        0% {
+            transform: translate(0px, 0px) scale(1);
+        }
+        50% {
+            transform: translate(15px, 20px) scale(1.08);
+        }
+        100% {
+            transform: translate(-10px, -15px) scale(0.95);
+        }
+    }
+
+    @keyframes float2 {
+        0% {
+            transform: translate(0px, 0px) scale(1);
+        }
+        50% {
+            transform: translate(-15px, -20px) scale(1.1);
+        }
+        100% {
+            transform: translate(10px, 15px) scale(0.92);
+        }
+    }
+
+    .dots {
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(circle, #3a3f5c 1px, transparent 1px);
+        background-size: 24px 24px;
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    main {
+        position: relative;
+        z-index: 1;
+        padding: 6rem 1.25rem 2rem;
+        max-width: 680px;
+        margin: 0 auto;
+        font-family: var(--font-mono);
+    }
+</style>

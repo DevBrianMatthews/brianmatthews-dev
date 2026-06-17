@@ -9,6 +9,8 @@
     --font-fira: "Fira Mono", monospace;
     --font-inter: "Inter", sans-serif;
 
+    --font-bold: bold;
+
     --bg-primary: linear-gradient(65deg, #0a0c11, #0c0f18);
     --bg-card: #0f1326;
     --border-card: #1e2440;
@@ -33,4 +35,18 @@ body {
     color: var(--text-primary);
     min-height: 100vh;
     font-family: var(--font-mono);
+}
+
+a,
+button {
+    cursor: pointer;
+}
+a,
+button:hover {
+    cursor: pointer;
+}
+
+input[type="text"],
+textarea {
+    cursor: text;
 }
