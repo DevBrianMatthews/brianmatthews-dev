@@ -6,7 +6,7 @@ interface Post {
     id: string
     data: {
         title: string
-        date: Date
+        date?: Date
         tags: string[]
     }
 }
@@ -53,9 +53,17 @@ export default function BlogSearch({ posts, tagFrequency }: Props) {
         }
 
         if (dateFilter === 'recent') {
-            result = result.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+            result = result.sort((a, b) => {
+                const dateA = a.data.date ? new Date(a.data.date).getTime() : 0
+                const dateB = b.data.date ? new Date(b.data.date).getTime() : 0
+                return dateB - dateA
+            })
         } else if (dateFilter === 'oldest') {
-            result = result.sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime())
+            result = result.sort((a, b) => {
+                const dateA = a.data.date ? new Date(a.data.date).getTime() : 0
+                const dateB = b.data.date ? new Date(b.data.date).getTime() : 0
+                return dateA - dateB
+            })
         }
 
         return result
@@ -67,7 +75,9 @@ export default function BlogSearch({ posts, tagFrequency }: Props) {
         )
     }
 
-    function formatDate(date: Date): string {
+    function formatDate(date: Date | undefined): string {
+        if (!date) return 'Sin fecha'
+
         return new Date(date).toLocaleDateString('en-US', {
             month: 'short',
             day: '2-digit',
