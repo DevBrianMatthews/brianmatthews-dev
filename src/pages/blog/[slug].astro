@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/layout/Header.astro";
 import { getCollection, render } from "astro:content";
+import BackgroundEffects from "../../components/layout/BackgroundEffects.astro";
 
 export async function getStaticPaths() {
     const posts = await getCollection(
@@ -29,6 +30,7 @@ function formatDate(date: Date): string {
 
 <BaseLayout title={`${post.data.title} - Brian Matthews`}>
     <Header />
+    <BackgroundEffects />
     <main>
         <a href="/blog" class="back-btn">&#8249;</a>
 
@@ -47,12 +49,13 @@ function formatDate(date: Date): string {
 
 <style>
     main {
+        position: relative;
+        z-index: 1;
         padding: 6rem 1.25rem 3rem;
         max-width: 680px;
         margin: 0 auto;
         font-family: var(--font-mono);
     }
-
     .back-btn {
         display: inline-block;
         color: var(--text-primary);

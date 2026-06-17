@@ -6,7 +6,7 @@ interface Props {
 const { showMenu = true } = Astro.props;
 ---
 
-<header>
+<header id="main-header">
     <a href="/" class="logo">
         <span class="bracket">{"{ "}</span>
         <span class="name">BRIAN MATTHEWS</span>
@@ -36,6 +36,20 @@ const { showMenu = true } = Astro.props;
     }
 </header>
 
+<script>
+    const header = document.getElementById("main-header");
+
+    function handleScroll() {
+        if (window.scrollY > 10) {
+            header?.classList.add("scrolled");
+        } else {
+            header?.classList.remove("scrolled");
+        }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+</script>
+
 <style>
     header {
         display: flex;
@@ -47,6 +61,15 @@ const { showMenu = true } = Astro.props;
         left: 0;
         right: 0;
         z-index: 100;
+        background: transparent;
+        transition:
+            background 0.3s ease,
+            backdrop-filter 0.3s ease;
+    }
+
+    header.scrolled {
+        background: rgba(10, 12, 17, 0.7);
+        backdrop-filter: blur(10px);
     }
 
     .logo {

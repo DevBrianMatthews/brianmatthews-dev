@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/layout/Header.astro";
 import BlogSearch from "../../components/blog/BlogSearch";
 import { getCollection } from "astro:content";
+import BackgroundEffects from "../../components/layout/BackgroundEffects.astro";
 
 const posts = await getCollection("blog", ({ data }) => {
     return data.draft !== true;
@@ -23,12 +24,7 @@ posts.forEach((post) => {
 <BaseLayout title="Blog - Brian Matthews">
     <Header />
 
-    <div class="orbs">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-    </div>
-
-    <div class="dots"></div>
+    <BackgroundEffects />
 
     <main>
         <BlogSearch
@@ -40,73 +36,6 @@ posts.forEach((post) => {
 </BaseLayout>
 
 <style>
-    .orbs {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    .orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(80px);
-    }
-
-    .orb-1 {
-        width: 250px;
-        height: 250px;
-        top: -60px;
-        left: -60px;
-        background: linear-gradient(70deg, #6013de, #0a1121);
-        opacity: 0.4;
-        animation: float1 10s ease-in-out infinite alternate;
-    }
-
-    .orb-2 {
-        width: 200px;
-        height: 200px;
-        top: 120px;
-        left: 20px;
-        background: linear-gradient(70deg, #1370de, #0a1121);
-        opacity: 0.4;
-        animation: float2 12s ease-in-out infinite alternate;
-    }
-
-    @keyframes float1 {
-        0% {
-            transform: translate(0px, 0px) scale(1);
-        }
-        50% {
-            transform: translate(15px, 20px) scale(1.08);
-        }
-        100% {
-            transform: translate(-10px, -15px) scale(0.95);
-        }
-    }
-
-    @keyframes float2 {
-        0% {
-            transform: translate(0px, 0px) scale(1);
-        }
-        50% {
-            transform: translate(-15px, -20px) scale(1.1);
-        }
-        100% {
-            transform: translate(10px, 15px) scale(0.92);
-        }
-    }
-
-    .dots {
-        position: fixed;
-        inset: 0;
-        background-image: radial-gradient(circle, #3a3f5c 1px, transparent 1px);
-        background-size: 24px 24px;
-        opacity: 0.3;
-        pointer-events: none;
-        z-index: 0;
-    }
-
     main {
         position: relative;
         z-index: 1;
