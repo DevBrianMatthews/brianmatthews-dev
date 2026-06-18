@@ -1,15 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/layout/Header.astro";
+import BackgroundEffects from "../components/layout/BackgroundEffects.astro";
 ---
 
 <BaseLayout title="Brian Matthews">
     <Header showMenu={false} />
 
-    <div class="orbs">
-        <div class="orb orb-blue"></div>
-        <div class="orb orb-purple"></div>
-    </div>
+    <BackgroundEffects />
 
     <main>
         <div class="hero-image">

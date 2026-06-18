@@ -50,16 +50,24 @@ const { showDots = true } = Astro.props;
             transform: translate(0px, 0px) scale(1);
             background: radial-gradient(circle, #6013de, #0a1121);
         }
+        15% {
+            transform: translate(0px, 0px) scale(1.9);
+            background: radial-gradient(circle, #8a13de, #0a1121);
+        }
         33% {
-            transform: translate(-40px, 30px) scale(1.15);
-            background: radial-gradient(circle, #8020ff, #0a1121);
+            transform: translate(-40px, 30px) scale(1.12);
+            background: radial-gradient(circle, #931bef, #0a1121);
         }
         66% {
-            transform: translate(20px, -30px) scale(0.9);
+            transform: translate(20px, -30px) scale(1.9);
             background: radial-gradient(circle, #5617a8, #0a1121);
         }
+        85% {
+            transform: translate(20px, -30px) scale(1.2);
+            background: radial-gradient(circle, #9713de, #0a1121);
+        }
         100% {
-            transform: translate(-20px, 40px) scale(1.1);
+            transform: translate(-20px, 40px) scale(0.9);
             background: radial-gradient(circle, #6013de, #0a1121);
         }
     }
@@ -69,13 +77,21 @@ const { showDots = true } = Astro.props;
             transform: translate(0px, 0px) scale(1);
             background: radial-gradient(circle, #1324de, #0a1121);
         }
+        15% {
+            transform: translate(0px, 0px) scale(1.2);
+            background: radial-gradient(circle, #5313de, #0a1121);
+        }
         33% {
-            transform: translate(30px, -40px) scale(1.2);
+            transform: translate(30px, -40px) scale(1.1);
             background: radial-gradient(circle, #8613de, #0a1121);
         }
         66% {
-            transform: translate(-30px, 20px) scale(0.85);
+            transform: translate(-30px, 20px) scale(1);
             background: radial-gradient(circle, #6013de, #0a1121);
+        }
+        85% {
+            transform: translate(-30px, 20px) scale(0.9);
+            background: radial-gradient(circle, #9713de, #0a1121);
         }
         100% {
             transform: translate(40px, -20px) scale(1.05);
