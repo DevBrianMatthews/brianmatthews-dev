@@ -57,3 +57,28 @@ textarea {
         opacity: 0.7;
     }
 }
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #502aa0 #0f121c;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f121c;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #502aa0;
+    border-radius: 5px;
+    border: 1px solid #0f121c;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6013de;
+    background-clip: padding-box;
+}
