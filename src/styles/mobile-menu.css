@@ -77,3 +77,39 @@
 .menu-item:hover .menu-icon {
     color: #502aa0;
 }
+
+.menu-icon-wrapper {
+    position: relative;
+    width: 24px;
+    height: 24px;
+}
+
+.icon-hamburger,
+.icon-close {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition:
+        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.3s ease;
+}
+
+.icon-hamburger {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.icon-close {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+}
+
+.menu-icon-wrapper.is-open .icon-hamburger {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+.menu-icon-wrapper.is-open .icon-close {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
