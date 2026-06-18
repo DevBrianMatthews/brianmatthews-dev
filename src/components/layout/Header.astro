@@ -7,6 +7,14 @@ interface Props {
 }
 
 const { showMenu = true } = Astro.props;
+
+const navLinks = [
+    { label: "Blog", href: "/blog" },
+    { label: "Skills", href: "#" },
+    { label: "Projects", href: "#" },
+    { label: "Contact", href: "#" },
+    { label: "Social", href: "#" },
+];
 ---
 
 <header id="main-header">
@@ -16,7 +24,23 @@ const { showMenu = true } = Astro.props;
         <span class="bracket">{" }"}</span>
     </a>
 
-    {showMenu && <MobileMenu client:load />}
+    {
+        showMenu && (
+            <>
+                <nav class="desktop-nav">
+                    {navLinks.map((link) => (
+                        <a href={link.href} class="nav-link">
+                            {link.label}
+                        </a>
+                    ))}
+                </nav>
+
+                <div class="mobile-menu-wrapper">
+                    <MobileMenu client:load />
+                </div>
+            </>
+        )
+    }
 </header>
 
 <script>
@@ -51,7 +75,7 @@ const { showMenu = true } = Astro.props;
     }
 
     header.scrolled {
-        background: rgba(11, 19, 37, 0.7);
+        background: rgba(10, 12, 17, 0.7);
         backdrop-filter: blur(10px);
     }
 
@@ -71,11 +95,39 @@ const { showMenu = true } = Astro.props;
         color: var(--text-primary);
     }
 
-    .menu-btn {
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: #3ebaff;
-        padding: 0.25rem;
+    /* Desktop nav — oculto en móvil */
+    .desktop-nav {
+        display: none;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .nav-link {
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #c9d0e1;
+        text-decoration: none;
+        transition: color 0.15s ease;
+    }
+
+    .nav-link:hover {
+        color: #502aa0;
+    }
+
+    /* Mobile menu — oculto en desktop */
+    .mobile-menu-wrapper {
+        display: flex;
+    }
+
+    /* Breakpoint desktop */
+    @media (min-width: 768px) {
+        .desktop-nav {
+            display: flex;
+        }
+
+        .mobile-menu-wrapper {
+            display: none;
+        }
     }
 </style>
