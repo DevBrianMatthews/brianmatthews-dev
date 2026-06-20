@@ -1,9 +1,10 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/layout/Header.astro";
-import { getCollection, render } from "astro:content";
 import BackgroundEffects from "../../components/layout/BackgroundEffects.astro";
 import Math from "../../components/blog/Math";
+import Callout from "../../components/blog/Callout.astro";
+import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
     const posts = await getCollection(
@@ -45,7 +46,7 @@ function formatDate(date: Date | undefined): string {
         </div>
 
         <article class="post-content">
-            <Content components={{ Math }} />
+            <Content components={{ Math, Callout }} />
         </article>
     </main>
 </BaseLayout>

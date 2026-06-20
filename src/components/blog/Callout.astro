@@ -1,0 +1,56 @@
+---
+interface Props {
+    type?: "tip" | "warning" | "error" | "success";
+}
+
+const { type = "tip" } = Astro.props;
+
+const config = {
+    tip: { icon: "💡", label: "Tip", color: "#3EBAFF" },
+    warning: { icon: "⚠️", label: "Warning", color: "#ffd700" },
+    error: { icon: "❌", label: "Error", color: "#ff5f56" },
+    success: { icon: "✅", label: "Success", color: "#00ff88" },
+};
+
+const { icon, color } = config[type];
+---
+
+<div class="callout" style={`--callout-color: ${color}`}>
+    <span class="callout-icon">{icon}</span>
+    <div class="callout-content">
+        <slot />
+    </div>
+</div>
+
+<style>
+    .callout {
+        display: flex;
+        gap: 0.75rem;
+        align-items: flex-start;
+        background: rgba(255, 255, 255, 0.03);
+        border-left: 3px solid var(--callout-color);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        margin: 1.5rem 0;
+    }
+
+    .callout-icon {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        flex-shrink: 0;
+    }
+
+    .callout-content {
+        color: var(--text-primary);
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .callout-content :global(p) {
+        margin: 0;
+    }
+
+    .callout-content :global(p:not(:last-child)) {
+        margin-bottom: 0.5rem;
+    }
+</style>
