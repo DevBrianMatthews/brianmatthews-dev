@@ -5,6 +5,7 @@ import BackgroundEffects from "../../components/layout/BackgroundEffects.astro";
 import Math from "../../components/blog/Math";
 import Callout from "../../components/blog/Callout.astro";
 import { getCollection, render } from "astro:content";
+import Toggle from "../../components/blog/Toggle.astro";
 
 export async function getStaticPaths() {
     const posts = await getCollection(
@@ -46,7 +47,7 @@ function formatDate(date: Date | undefined): string {
         </div>
 
         <article class="post-content">
-            <Content components={{ Math, Callout }} />
+            <Content components={{ Math, Callout, Toggle }} />
         </article>
     </main>
 </BaseLayout>
