@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/layout/Header.astro";
 import { getCollection, render } from "astro:content";
 import BackgroundEffects from "../../components/layout/BackgroundEffects.astro";
+import Math from "../../components/blog/Math";
 
 export async function getStaticPaths() {
     const posts = await getCollection(
@@ -44,7 +45,7 @@ function formatDate(date: Date | undefined): string {
         </div>
 
         <article class="post-content">
-            <Content />
+            <Content components={{ Math }} />
         </article>
     </main>
 </BaseLayout>
@@ -170,11 +171,29 @@ function formatDate(date: Date | undefined): string {
         font-size: 0.85rem;
     }
 
+    .post-content :global(.code-wrapper) {
+        position: relative;
+        margin: 1.5rem 0;
+    }
+
+    .post-content :global(.code-language-label) {
+        position: absolute;
+        top: 1rem;
+        right: 1.25rem;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-family: var(--font-mono);
+        z-index: 2;
+        pointer-events: none;
+    }
+
     .post-content :global(pre.astro-code) {
         position: relative !important;
         background-color: transparent !important;
         background-image:
-            linear-gradient(70deg, #0b0c11, #0e1024),
+            linear-gradient(70deg, #101118, #0e1024),
             linear-gradient(70deg, #36b2f0, #c01acc) !important;
         background-origin: border-box;
         background-clip: padding-box, border-box;
@@ -182,12 +201,12 @@ function formatDate(date: Date | undefined): string {
         border-radius: 12px;
         padding: 2.5rem 1.25rem 1.25rem;
         overflow-x: auto;
-        margin: 1.5rem 0;
+        margin: 0;
         box-shadow: 0 0 17px 6px rgba(54, 50, 255, 0.15);
         animation: borderShift 6s linear infinite;
     }
 
-    .post-content :global(pre.astro-code::before) {
+    .post-content :global(.code-wrapper::before) {
         content: "";
         position: absolute;
         top: 1rem;
@@ -199,18 +218,7 @@ function formatDate(date: Date | undefined): string {
         box-shadow:
             1rem 0 0 #ffbd2e,
             2rem 0 0 #27c93f;
-    }
-
-    .post-content :global(pre.astro-code::after) {
-        content: attr(data-language);
-        position: absolute;
-        top: 1rem;
-        right: 1.25rem;
-        font-size: 0.75rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-family: var(--font-mono);
+        z-index: 2;
     }
 
     .post-content :global(pre.astro-code code) {
@@ -218,6 +226,32 @@ function formatDate(date: Date | undefined): string {
         padding: 0;
         font-size: 0.85rem;
         line-height: 1.7;
+    }
+
+    .post-content :global(table) {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        font-size: 0.875rem;
+    }
+
+    .post-content :global(th) {
+        background: var(--bg-card);
+        color: var(--text-primary);
+        font-weight: 700;
+        padding: 0.75rem 1rem;
+        text-align: left;
+        border-bottom: 2px solid #4638d1;
+    }
+
+    .post-content :global(td) {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--border-card);
+        color: var(--text-primary);
+    }
+
+    .post-content :global(tr:hover td) {
+        background: rgba(70, 56, 209, 0.05);
     }
 
     @keyframes borderShift {

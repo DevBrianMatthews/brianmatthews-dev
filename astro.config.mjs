@@ -10,6 +10,7 @@ import react from "@astrojs/react";
 import remarkDirective from "remark-directive";
 import { remarkColor } from "./src/lib/remark-color.mjs";
 import { rehypeImageWidth } from "./src/lib/rehype-image-width.mjs";
+import { rehypeCodeWrapper } from "./src/lib/rehype-code-wrapper.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,7 +20,7 @@ export default defineConfig({
 
     markdown: {
         remarkPlugins: [remarkDirective, remarkColor],
-        rehypePlugins: [rehypeImageWidth],
+        rehypePlugins: [rehypeImageWidth, rehypeCodeWrapper],
         shikiConfig: {
             theme: "dracula",
         },
@@ -28,7 +29,7 @@ export default defineConfig({
     integrations: [
         mdx({
             remarkPlugins: [remarkDirective, remarkColor],
-            rehypePlugins: [rehypeImageWidth],
+            rehypePlugins: [rehypeImageWidth, rehypeCodeWrapper],
             shikiConfig: {
                 theme: "dracula",
             },

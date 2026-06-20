@@ -5,6 +5,8 @@ const colorMap = {
     v: "#00ff88",
     a: "#ffd700",
     p: "#6013DE",
+    r: "#de133c",
+    g: "#606077",
 };
 
 export function remarkColor() {
