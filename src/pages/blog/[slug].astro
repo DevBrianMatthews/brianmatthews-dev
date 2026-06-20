@@ -179,7 +179,7 @@ function formatDate(date: Date | undefined): string {
     .post-content :global(.code-language-label) {
         position: absolute;
         top: 1rem;
-        right: 1.25rem;
+        right: 3.75rem;
         font-size: 0.75rem;
         color: var(--text-muted);
         text-transform: uppercase;
@@ -254,6 +254,44 @@ function formatDate(date: Date | undefined): string {
         background: rgba(70, 56, 209, 0.05);
     }
 
+    .post-content :global(.copy-code-btn) {
+        position: absolute;
+        top: 1rem;
+        right: 1.25rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid #5b6377;
+        border-radius: 6px;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        cursor: pointer;
+        z-index: 3;
+        transition:
+            background 0.15s ease,
+            color 0.15s ease;
+    }
+
+    .post-content :global(.copy-code-btn:hover) {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+    }
+
+    .post-content :global(.icon-check) {
+        display: none;
+    }
+
+    .post-content :global(.copy-code-btn.copied .icon-copy) {
+        display: none;
+    }
+
+    .post-content :global(.copy-code-btn.copied .icon-check) {
+        display: block;
+        color: #27c93f;
+    }
+
     @keyframes borderShift {
         0% {
             background-position:
@@ -272,3 +310,23 @@ function formatDate(date: Date | undefined): string {
         }
     }
 </style>
+
+<script>
+    document.addEventListener("click", (e) => {
+        const btn = (e.target as HTMLElement).closest(".copy-code-btn");
+        if (!btn) return;
+
+        const wrapper = btn.closest(".code-wrapper");
+        const code = wrapper?.querySelector("code");
+        if (!code) return;
+
+        const text = code.textContent || "";
+
+        navigator.clipboard.writeText(text).then(() => {
+            btn.classList.add("copied");
+            setTimeout(() => {
+                btn.classList.remove("copied");
+            }, 2000);
+        });
+    });
+</script>
