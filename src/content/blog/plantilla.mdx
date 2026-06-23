@@ -85,7 +85,7 @@ Este link va a [Google](https://www.google.com)
 <Diagram
     code={`
 flowchart TD
-    A(Datos de entrada) --> B(Preprocesamiento)
+    A(Datos de entrada) ==> B(Preprocesamiento)
     B --> C(Modelo ML)
     C --> D(Predicción)
     D --> E{¿Correcto?}
@@ -97,9 +97,41 @@ flowchart TD
 
 <Diagram
     code={`
-    flowchart TD
-    A(Alejandra me quiere?) --> |Sí| B(Casemonos)
-    A --> |No| B(Casemonos de todas formas)
+    sequenceDiagram
+    Cliente->>Servidor: Petición HTTP
+    Servidor->>Base de datos: Query SQL
+    Base de datos-->>Servidor: Resultado
+    Servidor-->>Cliente: Respuesta JSON
+    `}
+
+/>
+
+<Diagram
+    code={`
+    classDiagram
+    class Animal {
+        +nombre: string
+        +hablar(): void
+    }
+    class Perro {
+        +raza: string
+        +ladrar(): void
+    }
+    Animal <|-- Perro
+    `}
+
+/>
+
+<Diagram
+    code={`
+    gitGraph
+    commit
+    branch feature
+    checkout feature
+    commit
+    commit
+    checkout main
+    merge feature
     `}
 
 />
@@ -113,3 +145,24 @@ export const data = [
 ];
 
 <Chart data={data} xKey="epoch" />
+
+export const curvaAprendizaje = [
+    { epoch: 1, train_loss: 0.95, val_loss: 0.97 },
+    { epoch: 5, train_loss: 0.72, val_loss: 0.76 },
+    { epoch: 10, train_loss: 0.51, val_loss: 0.58 },
+    { epoch: 15, train_loss: 0.34, val_loss: 0.42 },
+    { epoch: 20, train_loss: 0.21, val_loss: 0.35 },
+    { epoch: 25, train_loss: 0.14, val_loss: 0.31 },
+    { epoch: 30, train_loss: 0.09, val_loss: 0.29 },
+];
+
+<Chart
+    data={curvaAprendizaje}
+    xKey="epoch"
+    type="line"
+    height={350}
+    lines={[
+        { key: "train_loss", color: "#3EBAFF" },
+        { key: "val_loss", color: "#ffd700" },
+    ]}
+/>
