@@ -1,7 +1,7 @@
 ---
-title: "Como empezar con Algebra enfocada en Inteligencia Artificial"
+title: "Plantilla"
 tags: ["Python", "AI", "Algebra", "React"]
-draft: true
+draft: false
 date: 2026-06-16
 ---
 
@@ -80,3 +80,36 @@ Este link va a [Google](https://www.google.com)
 <Callout type="success">
     ¡Felicidades, completaste el ejercicio correctamente!
 </Callout>
+---
+
+<Diagram
+    code={`
+flowchart TD
+    A(Datos de entrada) --> B(Preprocesamiento)
+    B --> C(Modelo ML)
+    C --> D(Predicción)
+    D --> E{¿Correcto?}
+    E -->|Sí| F(Deploy)
+    E -->|No| G(Reentrenar)
+    G --> C
+`}
+/>
+
+<Diagram
+    code={`
+    flowchart TD
+    A(Alejandra me quiere?) --> |Sí| B(Casemonos)
+    A --> |No| B(Casemonos de todas formas)
+    `}
+
+/>
+
+export const data = [
+    { epoch: 1, loss: 0.9, accuracy: 0.5 },
+    { epoch: 2, loss: 0.7, accuracy: 0.65 },
+    { epoch: 3, loss: 0.5, accuracy: 0.75 },
+    { epoch: 4, loss: 0.3, accuracy: 0.85 },
+    { epoch: 5, loss: 0.15, accuracy: 0.93 },
+];
+
+<Chart data={data} xKey="epoch" />

@@ -1,0 +1,15 @@
+---
+import Chart from "./Chart";
+
+const { data, type, xKey, lines, bars, height } = Astro.props;
+---
+
+<Chart
+    data={data}
+    type={type}
+    xKey={xKey}
+    lines={lines}
+    bars={bars}
+    height={height}
+    client:load
+/>
