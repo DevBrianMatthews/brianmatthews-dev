@@ -1,11 +1,103 @@
 ---
 title: "¿Cómo comenzar en el desarrollo de software? — Capitulo I"
-tags: ["Python", "Charla"]
+tags: ["Python", "Charla", "Javascript"]
 draft: false
-date: 2026-06-16
+description: "Guía completa para comenzar en el desarrollo de software desde cero — roadmap, herramientas y primeros pasos."
+date: 2026-08-19
 ---
 
-Ahora todo el codigo es esto:
+Empezar en el desarrollo de software por cuenta propia suele ser un poco caótico y confuso con tantas herramientas y tecnologías por aprender; por todos esos videotutoriales que te dicen que hacer y que se contradicen unos con otros, y que solo termina saturando tu aprendizaje.
 
-<br />
-![diagrama](/public/DG-01.png)
+Por eso he creado una serie de tres post donde te llevaré de forma objetiva y clara a entender como empezar en el desarrollo de software.
+
+Mi objetivo no será decirte que memorices **:c[diez lenguajes]** de programación, ni **:c[veinte Frameworks]** o librerías, lo que haré será hacer que entiendas como encajan las piezas del mundo del software, como usarlas, cuándo y en qué orden.
+
+## El error que todos cometen al empezar
+
+Cuando decides empezar a aprender desarrollo de software una de las primeras cosas que comúnmente se hace es ver videos en Youtube con tutoriales donde te dicen que lenguaje o Framework aprender sin contexto del porqué, sin que puedas preguntar si es lo que buscas, y que terminan contradiciendo a otros tutoriales generando confusión o haciéndote perder tiempo llevandote por un camino contrario al que querías.
+
+Entonces… **:c[¿Por dónde empiezo?]**
+
+Esta pregunta tiene mucho sentido, el desarrollo de software es una de las carreras con más herramientas, lenguajes, metodologías y áreas de especialización. Cada año aparecen nuevas tecnologías, otras dejan de usarse y muchas evolucionan constantemente.
+
+La buena noticia es que esa complejidad se verá más adelante, al principio es más simple. — Al final de esta serie aprenderás:
+
+- Qué significa realmente desarrollar software.
+- Cómo está organizada la industria.
+- Qué conocimientos son realmente fundamentales.
+- Qué herramientas aprender primero.
+- Cómo evitar los errores que cometen la mayoría de principiantes.
+- Cómo construir un plan de estudio que siga siendo útil incluso dentro de cinco o diez años.
+
+En otras palabras, aprenderás a pensar como un **:c[desarrollador]**, no simplemente a escribir código.
+
+## Qué significa realmente desarrollar software
+
+Antes de hablar de errores o de herramientas, hay que resolver algo que casi nadie explica: qué es, en la práctica, este trabajo.
+
+La imagen popular es "alguien que escribe código". Es cierto, pero incompleta — y la parte que falta es la que más te va a servir. Desarrollar software es traducir un problema humano en instrucciones que una máquina puede ejecutar de forma confiable. El código es solo el idioma en el que escribes esa traducción, no el trabajo en sí.
+
+Ese trabajo real tiene un ciclo que se repite sin importar el proyecto:
+
+1. **:c[Entender el problema]** — qué necesita resolver el usuario, no qué es "técnicamente interesante" construir.
+2. **:c[Diseñar una solución]** — antes de escribir una sola línea, decidir cómo se van a organizar las piezas.
+3. **:c[Implementar]** — escribir el código. Esta es la parte más visible, pero suele ocupar menos tiempo del que imaginas.
+4. **:c[Probar y depurar]** — encontrar dónde falla, y por qué.
+5. **:c[Mantener]** — la mayoría del tiempo profesional no se va en escribir código nuevo, sino en leer y modificar código que ya existe, propio o de otra persona.
+
+Ese último punto sorprende a casi todos los que empiezan: se lee mucho más código del que se escribe. Si tu plan de aprendizaje solo entrena "escribir desde cero", te estás preparando para una fracción pequeña del trabajo real.
+
+Esto también explica por qué el lenguaje que elijas primero importa menos de lo que crees — lo que estás aprendiendo de fondo es este ciclo completo, y el ciclo es el mismo en Python, en JavaScript o en cualquier otro lenguaje.
+
+Una de las primeras preguntas que surgen es: ¿Qué lenguaje aprendo primero? Y aunque parezca una buena pregunta, realmente no lo es, es como si un arquitecto preguntara que martillo elegir antes de aprender arquitectura. — El martillo importa, pero solo es una herramienta a usar.
+
+Es más importante saber **:c[qué vas a construir]** y antes de elegir si Python, Javascript, C++, etc, hay mejores preguntas por hacerse.
+
+Supongamos que tienes una idea, quieres construir una app móvil, dependiendo del tipo de aplicación, el camino cambia completamente, si la idea es un sitio web necesitarás unas herramientas. Si quieres crear un videojuego, necesitarás otras. Si quieres trabajar en inteligencia artificial, utilizarás tecnologías completamente diferentes. Y así con cada campo del desarrollo de software. — Lo bueno es que aunque el camino sea diferente para cada proyecto, la mayoría parte de las mismas bases, de fundamentos comunes.
+
+<Diagram
+    code={`
+flowchart TD
+    A(DESARROLLO DE SOFTWARE)
+    A --> B1(Front-End)
+    A --> B2(Back-End)
+    A --> B3(Móvil)
+    A --> B4(Data Science)
+    A --> B5(CyberSecurity)
+    B1 --> C1(Interfaces)
+    B2 --> C2(APIs)
+    B3 --> C3(Apps Móviles)
+    B4 --> C4(IA)
+    B5 --> C5(Pentesting)
+`}
+/>
+
+## Mi propio error
+
+Cuando empecé a programar me pasaba que veía un video en Youtube de Javascript donde enseñaban a hacer algo o explicaban un concepto como los **:c[Arrays]** y al final no sabía como implementar eso "aprendido" en un proyecto propio y al cabo de uno tiempo no recordaba lo "aprendido" lo que me terminaba haciendo pensar que había visto horas de videos de programación y aún no entendia nada y que tal vez el desarrollador de software no era lo mio.
+Pero el problema nunca fue que no sirviera para esto. El problema era cómo estaba aprendiendo.
+
+Ver un video sobre Arrays no te enseña Arrays. Te enseña a ver a alguien más usar Arrays. Son cosas distintas, y la diferencia es la que separa a quien "ha visto" programación de quien realmente sabe programar.
+
+## Mirar no es aprender
+
+Cuando ves un tutorial, tu cerebro reconoce el patrón mientras lo ves — "ah, sí, eso tiene sentido" — y esa sensación de comprensión es real, pero es frágil. No pasó por el proceso de romperse la cabeza intentando resolver un problema, equivocarte, leer el error, y volver a intentarlo. Ese proceso es el que fija el conocimiento. Sin él, lo que queda es familiaridad, no dominio.
+
+Es la diferencia entre ver a alguien nadar y meterte tú al agua.
+
+La solución: **:c[construir, no memorizar]**
+
+No necesitas memorizar sintaxis. Necesitas construir cosas pequeñas, romperlas, y arreglarlas. Un ciclo mínimo que funciona así:
+
+- Aprendes un concepto puntual (por ejemplo, Arrays).
+- Lo usas de inmediato en un ejercicio propio, no copiado.
+- Te atoras, buscas la solución a tu problema específico (no ves otro tutorial genérico).
+- Repites con el siguiente concepto.
+
+Este ciclo es lento al inicio — más lento que simplemente ver videos uno tras otro — pero es el único que deja conocimiento que se queda contigo dentro de un mes, no solo dentro de una hora.
+
+## Qué sigue
+
+En la Parte 2 vamos a resolver la pregunta que probablemente ya tienes en la cabeza: "vale, entiendo que debo construir, pero ¿construir qué, y con qué bases?" — para eso necesitas entender cómo está organizada la industria del software y qué conocimientos son realmente fundamentales, sin importar el área que elijas.
+
+---

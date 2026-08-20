@@ -4,9 +4,20 @@ import "../styles/global.css";
 interface Props {
     title: string;
     description?: string;
+    image?: string;
+    type?: "website" | "article";
 }
 
-const { title, description = "Blog de Brian Matthews" } = Astro.props;
+const {
+    title,
+    description = "Blog de Brian Matthews — Desarrollo de software, Python, IA y matemáticas.",
+    image = "/banner.png",
+    type = "website",
+} = Astro.props;
+
+const siteUrl = "https://brianmatthews.dev";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const imageUrl = new URL(image, siteUrl).toString();
 ---
 
 <!doctype html>
@@ -22,6 +33,23 @@ const { title, description = "Blog de Brian Matthews" } = Astro.props;
         <meta name="generator" content={Astro.generator} />
         <meta name="description" content={description} />
         <title>{title}</title>
+
+        <!-- Open Graph -->
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content={type} />
+        <meta property="og:site_name" content="Brian Matthews" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={imageUrl} />
+
+        <!-- Canonical -->
+        <link rel="canonical" href={canonicalUrl} />
     </head>
     <body>
         <slot />
