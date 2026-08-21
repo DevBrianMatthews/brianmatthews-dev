@@ -15,7 +15,8 @@ const {
     type = "website",
 } = Astro.props;
 
-const siteUrl = "https://brianmatthews.dev";
+// const siteUrl = "https://brianmatthews.dev";
+const siteUrl = "https://brianmatthews-dev.vercel.app"; // TEMPORAL
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const imageUrl = new URL(image, siteUrl).toString();
 ---
