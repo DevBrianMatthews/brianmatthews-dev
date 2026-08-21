@@ -19,6 +19,11 @@
     --accent-cyan: #3ebaff;
     --accent-purple: #6013de;
 }
+html,
+body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
 
 * {
     margin: 0;
