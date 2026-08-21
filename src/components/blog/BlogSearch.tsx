@@ -171,7 +171,7 @@ export default function BlogSearch({ posts, tagFrequency }: Props) {
                     <p className="no-results">No posts found.</p>
                 ) : (
                     filteredPosts.map((post) => (
-                        <a key={post.id} href={`/blog/${post.id}`} className="post-card">
+                        <a key={post.id} href={`/blog/${(post.data as any).slug || post.id}`} className="post-card">
                             <h2 className="post-title">{post.data.title}</h2>
                             <div className="post-meta">
                                 <span className="post-date">{formatDate(post.data.date)}</span>
