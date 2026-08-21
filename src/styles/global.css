@@ -56,6 +56,14 @@ textarea {
     cursor: text;
 }
 
+header,
+.orbs,
+.dots {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+}
+
 @media (hover: none) {
     a:active,
     button:active {
